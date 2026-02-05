@@ -77,8 +77,9 @@ const Login = () => {
             }
             try {
                 //checking if user exists
-                const checkResp = await Axios.post(APP_SERVER + "/api/auth/check", { email: email });
-                if (!await checkResp.data.status) {
+               // const checkResp = await Axios.post(APP_SERVER + "/api/auth/check", { email: email });
+              const checkResp = await Axios.post(APP_SERVER + "/auth/check", { email: email });
+               if (!await checkResp.data.status) {
                     toast("Please register first!", {icon: '⚠️'});
                     setLoading(false);
                     return navigate("/register");
@@ -88,7 +89,8 @@ const Login = () => {
 
                 // Validate didToken with server
                 try {
-                    const loginResp = await Axios.post(APP_SERVER + "/api/auth/login", { email }, {
+           //         const loginResp = await Axios.post(APP_SERVER + "/api/auth/login", { email }, {
+                const loginResp = await Axios.post(APP_SERVER + "/auth/login", { email }, {
                         headers: {
                             Authorization: "Bearer " + didToken
                         }

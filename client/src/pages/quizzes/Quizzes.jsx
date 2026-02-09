@@ -11,8 +11,16 @@ const Quizzes = () => {
     const auth = useAuthStore(state => state.auth);
     const user = useUserStore(state => state.user);
 
-    if (!auth) return <h1>Loading...</h1>
+    // 1️⃣ Store not hydrated yet
+  if (auth === undefined) {
+    return <h1>Loading...</h1>;
+  }
 
+  // 2️⃣ User not authenticated
+  if (auth === false) {
+    navigate("/login");
+    return null;
+  }
     return (
         <Card className="w-full p-2 max-h-screen" id="resp-con">
             <div className="flex flex-wrap h-screen">

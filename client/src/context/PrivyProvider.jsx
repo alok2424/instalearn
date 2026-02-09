@@ -1,6 +1,5 @@
 "use client";
 import { defineChain } from "viem";
-
 import { useCallback, useEffect } from "react";
 import { PrivyProvider, usePrivy, useWallets } from "@privy-io/react-auth";
 import { useUserDetails } from "./UserAuthContext";
